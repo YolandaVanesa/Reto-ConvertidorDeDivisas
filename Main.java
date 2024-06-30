@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 public class Main {
 
-    private static final String API_KEY = "0d75aff3ce2b27417a9a33be"; // API Key proporcionada
+    private static final String API_KEY = "0d75aff3ce2b27417a9a33be";
 
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
@@ -52,9 +52,9 @@ public class Main {
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            // Verificar el código de respuesta
+            // Aqui verificamos el código de respuesta
             if (response.statusCode() == 200) {
-                // Procesar la respuesta JSON para obtener la tasa de cambio
+                // Procesar la respuesta JSON para obtener el tipo de cambio
                 double valorDolar = obtenerValorDolar(response.body(), monedaDestino);
                 if (valorDolar != -1) {
                     System.out.printf("Ingrese la cantidad de %s: ", monedaOrigen);
@@ -78,7 +78,7 @@ public class Main {
     }
 
     static double obtenerValorDolar(String responseBody, String monedaDestino) {
-        // Parsear la respuesta JSON para obtener la tasa de cambio
+        // Parsear la respuesta JSON para obtener el tipo de cambio
         try {
             JSONObject json = new JSONObject(responseBody);
             JSONObject rates = json.getJSONObject("conversion_rates");
